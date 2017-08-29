@@ -1,16 +1,31 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MdButtonModule } from '@angular/material';
+import { RouterModule, Routes } from '@angular/router';
+import { LoginPageComponent } from './auth/containers/login-page/login-page.component';
+import { AuthModule } from './auth/auth.module';
+import { CoreModule } from './core/core.module';
+import { CashplayComponent } from './core/containers/cashplay/cashplay.component';
+import { AuthGuard } from './auth/services/auth-guard.service';
+import { AppComponent } from './core/containers/app/app.component';
+
+const routes: Routes = [
+  {path: 'auth', loadChildren: './auth/auth.module#AuthModule'},
+  {path: 'app', component: CashplayComponent, canActivate: [AuthGuard]},
+];
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    BrowserAnimationsModule,
+
+    RouterModule.forRoot(routes),
+
+    CoreModule.forRoot(),
+    AuthModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]
