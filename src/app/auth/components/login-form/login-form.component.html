@@ -13,6 +13,8 @@
     </md-input-container>
   </form>
   <p *ngIf="authFailed" class="art-error">Email or Password does not match.</p>
-  <button md-raised-button card-action color="primary" (click)="login()" [disabled]="!loginForm.valid">LOGIN</button>
+  <button md-raised-button card-action color="primary" (click)="login()" [disabled]="!loginForm.valid || pending">
+    LOGIN
+  </button>
 </art-card>
 

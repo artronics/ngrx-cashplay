@@ -7,6 +7,7 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/catch';
+import 'rxjs/add/operator/delay';
 import { Account } from '../models/account';
 
 @Injectable()
@@ -17,6 +18,7 @@ export class AuthService {
 
   login(auth: Authenticate): Observable<Account> {
     return this.http.post(`${this.appConfig.baseUrl}/login`, JSON.stringify(auth))
+      .delay(3000)
       .map(res => res.json() as Account)
       .catch(err => _throw('Invalid email or password'));
   }

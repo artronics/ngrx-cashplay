@@ -9,14 +9,7 @@ import { Authenticate } from '../../models/authenticate';
 export class LoginFormComponent implements OnInit {
   auth: Authenticate = {email: '', password: ''};
 
-  @Input() set pending(isPending: boolean) {
-    this.loginForm.disable = isPending;
-    // if (isPending) {
-    //   this.loginForm.disable();
-    // } else {
-    //   this.loginForm.enable();
-    // }
-  }
+  @Input() pending;
 
   @Input() errorMessage: string | null;
   @Output() submitted = new EventEmitter<Authenticate>();

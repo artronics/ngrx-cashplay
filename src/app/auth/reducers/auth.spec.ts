@@ -1,8 +1,8 @@
-import { reducer } from './auth';
 import * as fromAuth from './auth';
+import { reducer } from './auth';
 import { Login, LoginSuccess, Logout } from '../actions/auth';
-import { User } from '../models/user';
 import { Authenticate } from '../models/authenticate';
+import { Account } from '../models/account';
 
 describe('AuthReducer', () => {
   describe('undefined action', () => {
@@ -28,12 +28,12 @@ describe('AuthReducer', () => {
 
   describe('LOGIN_SUCCESS', () => {
     it('should add a user set loggedIn to true in auth state', () => {
-      const user = { name: 'test' } as User;
-      const createAction = new LoginSuccess({ user });
+      const account = {} as Account;
+      const createAction = new LoginSuccess({account});
 
       const expectedResult = {
         loggedIn: true,
-        user: { name: 'test' },
+        account: {},
       };
 
       const result = reducer(fromAuth.initialState, createAction);
@@ -45,7 +45,7 @@ describe('AuthReducer', () => {
     it('should logout a user', () => {
       const initialState = {
         loggedIn: true,
-        user: { name: 'test' },
+        account: {},
       } as fromAuth.State;
       const createAction = new Logout();
 

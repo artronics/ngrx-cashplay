@@ -1,8 +1,8 @@
-import { reducer } from './login-page';
 import * as fromLoginPage from './login-page';
-import { Login, LoginSuccess, LoginFailure, Logout } from '../actions/auth';
-import { User } from '../models/user';
+import { reducer } from './login-page';
+import { Login, LoginFailure, LoginSuccess } from '../actions/auth';
 import { Authenticate } from '../models/authenticate';
+import { Account } from '../models/account';
 
 describe('LoginPageReducer', () => {
   describe('undefined action', () => {
@@ -31,8 +31,8 @@ describe('LoginPageReducer', () => {
 
   describe('LOGIN_SUCCESS', () => {
     it('should have no error and no pending state', () => {
-      const user = { name: 'test' } as User;
-      const createAction = new LoginSuccess({ user });
+      const account = {} as Account;
+      const createAction = new LoginSuccess({account});
 
       const expectedResult = {
         error: null,
