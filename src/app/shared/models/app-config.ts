@@ -9,7 +9,7 @@ export interface AppConfig {
 }
 
 export const CASHPLAY_CONFIG: AppConfig = {
-  baseUrl: 'http://localhost:8080/api/',
+  baseUrl: 'http://localhost:8080/api',
   pageSizeOptions: [1, 2, 3, 5, 10],
   defaultResourcesPerPage: 10,
   recentlyAddedCustomersPerPage: 3,

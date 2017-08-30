@@ -20,7 +20,7 @@ export class AuthEffects {
     .exhaustMap(auth =>
       this.authService
         .login(auth)
-        .map(user => new Auth.LoginSuccess({ user }))
+        .map(account => new Auth.LoginSuccess({account}))
         .catch(error => of(new Auth.LoginFailure(error)))
     );
 

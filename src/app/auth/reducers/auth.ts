@@ -1,14 +1,13 @@
 import * as auth from '../actions/auth';
-import { User } from '../models/user';
 
 export interface State {
   loggedIn: boolean;
-  user: User | null;
+  account: Account | null;
 }
 
 export const initialState: State = {
   loggedIn: false,
-  user: null,
+  account: null,
 };
 
 export function reducer(state = initialState, action: auth.Actions): State {
@@ -18,7 +17,7 @@ export function reducer(state = initialState, action: auth.Actions): State {
       return {
         ...state,
         loggedIn: true,
-        user: action.payload.user,
+        account: action.payload.account,
       };
     }
 
@@ -33,4 +32,4 @@ export function reducer(state = initialState, action: auth.Actions): State {
 }
 
 export const getLoggedIn = (state: State) => state.loggedIn;
-export const getUser = (state: State) => state.user;
+export const getUser = (state: State) => state.account;
