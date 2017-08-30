@@ -5,7 +5,7 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/take';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { Effect, Actions } from '@ngrx/effects';
+import { Actions, Effect } from '@ngrx/effects';
 import { of } from 'rxjs/observable/of';
 
 import { AuthService } from '../services/auth.service';
@@ -27,7 +27,7 @@ export class AuthEffects {
   @Effect({ dispatch: false })
   loginSuccess$ = this.actions$
     .ofType(Auth.LOGIN_SUCCESS)
-    .do(() => this.router.navigate(['/']));
+    .do(() => this.router.navigate(['/app']));
 
   @Effect({ dispatch: false })
   loginRedirect$ = this.actions$

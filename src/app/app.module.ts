@@ -2,9 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MdButtonModule } from '@angular/material';
 import { RouterModule, Routes } from '@angular/router';
-import { LoginPageComponent } from './auth/containers/login-page/login-page.component';
 import { AuthModule } from './auth/auth.module';
 import { CoreModule } from './core/core.module';
 import { CashplayComponent } from './core/containers/cashplay/cashplay.component';
@@ -14,6 +12,9 @@ import { StoreModule } from '@ngrx/store';
 import { reducers } from './app.reducer';
 import { EffectsModule } from '@ngrx/effects';
 import { AuthEffects } from './auth/effects/auth.effects';
+import { ApiService } from './shared/services/api.service';
+import { HttpModule } from '@angular/http';
+import { APP_CONFIG, CASHPLAY_CONFIG } from './shared/models/app-config';
 
 export function authLoadChildren() {
   return AuthModule;
@@ -25,6 +26,7 @@ export const routes: Routes = [
 @NgModule({
   imports: [
     BrowserModule,
+    HttpModule,
     BrowserAnimationsModule,
 
     RouterModule.forRoot(routes),
@@ -35,7 +37,10 @@ export const routes: Routes = [
     AuthModule,
 
   ],
-  providers: [],
+  providers: [
+    {provide: APP_CONFIG, useValue: CASHPLAY_CONFIG},
+    ApiService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
