@@ -7,13 +7,26 @@ import { Authenticate } from '../../models/authenticate';
 @Component({
   selector: 'art-login-page',
   template: `
-    <art-login-form
-      (submitted)="onSubmit($event)"
-      [pending]="pending$ | async"
-      [errorMessage]="error$ | async">
-    </art-login-form>
+    <div class="art-login-page">
+      <art-login-form class="art-login-form"
+                      (submitted)="onSubmit($event)"
+                      [pending]="pending$ | async"
+                      [errorMessage]="error$ | async">
+      </art-login-form>
+    </div>
   `,
-  styles: [],
+  styles: [`
+    .art-login-page {
+      width: 100vw;
+      height: 100vh;
+    }
+
+    .art-login-form {
+      margin-top: 200px;
+      display: flex;
+      justify-content: center;
+    }
+  `],
 })
 export class LoginPageComponent implements OnInit {
   pending$ = this.store.select(fromAuth.getLoginPagePending);
