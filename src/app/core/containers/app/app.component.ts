@@ -8,7 +8,7 @@ import { Store } from '@ngrx/store';
   template: `
     <router-outlet></router-outlet>
   `,
-  styleUrls: ['./app.component.scss']
+  styles: []
 })
 export class AppComponent implements OnInit {
 

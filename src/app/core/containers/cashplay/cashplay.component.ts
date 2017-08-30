@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import * as fromAuth from '../../../auth/reducers';
+import * as Auth from '../../../auth/actions/auth';
 
 @Component({
   selector: 'art-cashplay',
@@ -7,9 +10,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CashplayComponent implements OnInit {
 
-  constructor() { }
+  constructor(private store: Store<fromAuth.State>) {
+  }
 
   ngOnInit() {
+  }
+
+  logout() {
+    this.store.dispatch(new Auth.Logout());
   }
 
 }
