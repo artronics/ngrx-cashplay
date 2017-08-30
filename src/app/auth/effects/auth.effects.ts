@@ -20,25 +20,30 @@ export class AuthEffects {
     .exhaustMap(auth =>
       this.authService
         .login(auth)
-        .map(account => new Auth.LoginSuccess({account}))
+        .map(account => {
+          account.loggedInUser = account.users.filter(u => u.email === auth.email)[0];
+          return new Auth.LoginSuccess({account});
+        })
         .catch(error => of(new Auth.LoginFailure(error)))
     );
 
-  @Effect({ dispatch: false })
+  @Effect({dispatch: false})
   loginSuccess$ = this.actions$
     .ofType(Auth.LOGIN_SUCCESS)
-    .do(() => this.router.navigate(['/app']));
+    .do((action: Auth.LoginSuccess) => {
+      window.localStorage.setItem('account', JSON.stringify(action.payload.account));
+      this.router.navigate(['/app']);
+    });
 
-  @Effect({ dispatch: false })
+  @Effect({dispatch: false})
   loginRedirect$ = this.actions$
     .ofType(Auth.LOGIN_REDIRECT, Auth.LOGOUT)
     .do(authed => {
       this.router.navigate(['/login']);
     });
 
-  constructor(
-    private actions$: Actions,
-    private authService: AuthService,
-    private router: Router
-  ) {}
+  constructor(private actions$: Actions,
+              private authService: AuthService,
+              private router: Router) {
+  }
 }

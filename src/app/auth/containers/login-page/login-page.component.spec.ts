@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { LoginPageComponent } from './login-page.component';
 import { LoginFormComponent } from '../../components/login-form/login-form.component';
-import { MdInputModule } from '@angular/material';
+import { MdInputModule, MdProgressSpinnerModule } from '@angular/material';
 import { FormsModule } from '@angular/forms';
 import { SharedModule } from '../../../shared/shared.module';
 import { Store } from '@ngrx/store';
@@ -23,6 +23,7 @@ describe('LoginPageComponent', () => {
         SharedModule,
         FormsModule,
         MdInputModule,
+        MdProgressSpinnerModule,
       ],
       providers: [
         {provide: Store, useValue: storeStub}

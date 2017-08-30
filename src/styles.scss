@@ -5,3 +5,10 @@ body {
   margin:0;
   font-family: Helvetica;
 }
+
+.art-button-spinner md-spinner {
+  display: inline-flex;
+  margin-left: .5em;
+  width: 1em;
+  height: 1em;
+}
