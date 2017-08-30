@@ -10,12 +10,18 @@ import { CoreModule } from './core/core.module';
 import { CashplayComponent } from './core/containers/cashplay/cashplay.component';
 import { AuthGuard } from './auth/services/auth-guard.service';
 import { AppComponent } from './core/containers/app/app.component';
+import { StoreModule } from '@ngrx/store';
+import { reducers } from './app.reducer';
+import { EffectsModule } from '@ngrx/effects';
+import { AuthEffects } from './auth/effects/auth.effects';
 
-const routes: Routes = [
-  {path: 'auth', loadChildren: './auth/auth.module#AuthModule'},
+export function authLoadChildren() {
+  return AuthModule;
+}
+export const routes: Routes = [
+  {path: 'auth', loadChildren: authLoadChildren},
   {path: 'app', component: CashplayComponent, canActivate: [AuthGuard]},
 ];
-
 @NgModule({
   imports: [
     BrowserModule,
@@ -23,6 +29,8 @@ const routes: Routes = [
 
     RouterModule.forRoot(routes),
 
+    StoreModule.forRoot(reducers),
+    EffectsModule.forRoot([AuthEffects]),
     CoreModule.forRoot(),
     AuthModule,
 

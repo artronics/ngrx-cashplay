@@ -1,0 +1,13 @@
+<form #loginForm="ngForm" (ngSubmit)="login()">
+  <md-input-container>
+    <input mdInput name="email" [(ngModel)]="auth.email" #email="ngModel" required type="email" placeholder="Email">
+  </md-input-container>
+  <md-input-container>
+    <input mdInput name="password" [(ngModel)]="auth.password" #password="ngModel" required type="password" placeholder="Password">
+  </md-input-container>
+
+  <p *ngIf="errorMessage" class="loginError">
+    {{ errorMessage }}
+  </p>
+  <button md-raised-button> LOGIN</button>
+</form>
