@@ -7,6 +7,7 @@ export const LOGOUT = '[Auth] Logout';
 export const LOGIN_SUCCESS = '[Auth] Login Success';
 export const LOGIN_FAILURE = '[Auth] Login Failure';
 export const LOGIN_REDIRECT = '[Auth] Login Redirect';
+export const CHECK_ACCOUNT_IN_STORAGE = '[Auth] Check Account In Storage';
 
 export class Login implements Action {
   readonly type = LOGIN;
@@ -31,6 +32,10 @@ export class LoginRedirect implements Action {
   readonly type = LOGIN_REDIRECT;
 }
 
+export class CheckAccountInStorage implements Action {
+  readonly type = CHECK_ACCOUNT_IN_STORAGE;
+}
+
 export class Logout implements Action {
   readonly type = LOGOUT;
 }
@@ -40,5 +45,6 @@ export type Actions =
   | LoginSuccess
   | LoginFailure
   | LoginRedirect
+  | CheckAccountInStorage
   | Logout;
 

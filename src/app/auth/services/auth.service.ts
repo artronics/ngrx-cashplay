@@ -18,7 +18,6 @@ export class AuthService {
 
   login(auth: Authenticate): Observable<Account> {
     return this.http.post(`${this.appConfig.baseUrl}/login`, JSON.stringify(auth))
-      .delay(3000)
       .map(res => res.json() as Account)
       .catch(err => _throw('Invalid email or password'));
   }

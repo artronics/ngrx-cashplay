@@ -15,6 +15,7 @@ import { AuthEffects } from './auth/effects/auth.effects';
 import { ApiService } from './shared/services/api.service';
 import { HttpModule } from '@angular/http';
 import { APP_CONFIG, CASHPLAY_CONFIG } from './shared/models/app-config';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 export function authLoadChildren() {
   return AuthModule;
@@ -32,7 +33,9 @@ export const routes: Routes = [
     RouterModule.forRoot(routes),
 
     StoreModule.forRoot(reducers),
+    StoreDevtoolsModule.instrument(),
     EffectsModule.forRoot([AuthEffects]),
+
     CoreModule.forRoot(),
     AuthModule,
 

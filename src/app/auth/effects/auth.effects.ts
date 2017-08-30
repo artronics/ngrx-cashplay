@@ -10,6 +10,8 @@ import { of } from 'rxjs/observable/of';
 
 import { AuthService } from '../services/auth.service';
 import * as Auth from '../actions/auth';
+import { LoginRedirect, LoginSuccess } from '../actions/auth';
+import { Account } from '../models/account';
 
 @Injectable()
 export class AuthEffects {
@@ -33,6 +35,19 @@ export class AuthEffects {
     .do((action: Auth.LoginSuccess) => {
       window.localStorage.setItem('account', JSON.stringify(action.payload.account));
       this.router.navigate(['/app']);
+    });
+
+  @Effect()
+  checkAccountInStorage$ = this.actions$
+    .ofType(Auth.CHECK_ACCOUNT_IN_STORAGE)
+    .map((action: Auth.CheckAccountInStorage) => {
+      const accountStr = window.localStorage.getItem('account');
+      if (accountStr) {
+        const account = JSON.parse(accountStr) as Account;
+        return new LoginSuccess({account});
+      } else {
+        return new LoginRedirect();
+      }
     });
 
   @Effect({dispatch: false})
