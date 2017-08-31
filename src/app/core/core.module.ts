@@ -4,6 +4,7 @@ import { CashplayComponent } from './containers/cashplay/cashplay.component';
 import { AppComponent } from './containers/app/app.component';
 import { MdButtonModule, MdMenuModule, MdToolbarModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CommonModule } from '@angular/common';
 
 const routes: Routes = [
 
@@ -12,6 +13,7 @@ const COMPONENTS = [AppComponent, CashplayComponent];
 @NgModule({
   declarations: COMPONENTS,
   imports: [
+    CommonModule,
     RouterModule.forChild(routes),
     BrowserAnimationsModule,
     MdButtonModule,

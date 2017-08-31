@@ -4,7 +4,7 @@
     <span class="art-toolbar-middle"></span>
     <span>
       <button md-button [mdMenuTriggerFor]="userMenu" class="art-capitalize art-user-menu"><i
-        class="fa fa-user-circle-o"></i> jalal <i class="fa fa-caret-down"></i></button>
+        class="fa fa-user-circle-o"></i> {{account.loggedInUser.name}} <i class="fa fa-caret-down"></i></button>
       <md-menu #userMenu="mdMenu">
         <button md-menu-item><i class="fa fa-exchange"></i> Change User</button>
         <button md-menu-item (click)="logout()"><i class="fa fa-sign-out"></i> Logout</button>

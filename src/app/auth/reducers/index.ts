@@ -27,7 +27,7 @@ export const getLoggedIn = createSelector(
   selectAuthStatusState,
   fromAuth.getLoggedIn
 );
-export const getUser = createSelector(selectAuthStatusState, fromAuth.getUser);
+export const getAccount = createSelector(selectAuthStatusState, fromAuth.getUser);
 
 export const selectLoginPageState = createSelector(
   selectAuthState,

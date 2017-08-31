@@ -11,7 +11,6 @@ import { Store } from '@ngrx/store';
   styles: []
 })
 export class AppComponent implements OnInit {
-
   constructor(private store: Store<fromAuth.State>) {
     this.store.dispatch(new Auth.CheckAccountInStorage());
   }

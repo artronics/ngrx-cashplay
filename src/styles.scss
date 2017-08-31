@@ -7,6 +7,10 @@ body {
   font-family: Helvetica;
 }
 
+.art-capitalize {
+  text-transform: capitalize;
+}
+
 .art-button-spinner md-spinner {
   display: inline-flex;
   margin-left: .5em;
