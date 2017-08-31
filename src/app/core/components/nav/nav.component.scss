@@ -1,0 +1,14 @@
+@import "../../../../variables";
+
+.art-nav a {
+  display: block;
+  width: 100%;
+  padding: 10px 5px;
+  color: #000;
+  display: block;
+  //border-bottom: 2px solid $border-color;
+  &:hover {
+    background-color: $nav-hover-color;
+    font-style: italic;
+  }
+}

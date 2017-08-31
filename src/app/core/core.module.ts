@@ -5,20 +5,26 @@ import { AppComponent } from './containers/app/app.component';
 import { MdButtonModule, MdMenuModule, MdToolbarModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CommonModule } from '@angular/common';
+import { NavComponent } from './components/nav/nav.component';
+import { CustomerModule, customerRoutes } from '../customer/customer.module';
 
-const routes: Routes = [
-
+export const appRoutes: Routes = [
+  {path: 'customer', children: customerRoutes}
 ];
-const COMPONENTS = [AppComponent, CashplayComponent];
+const COMPONENTS = [AppComponent, CashplayComponent, NavComponent];
+
 @NgModule({
   declarations: COMPONENTS,
   imports: [
     CommonModule,
-    RouterModule.forChild(routes),
+    // RouterModule.forChild(routes),
+    RouterModule,
     BrowserAnimationsModule,
     MdButtonModule,
     MdMenuModule,
     MdToolbarModule,
+
+    CustomerModule,
   ],
   exports: COMPONENTS,
 })
