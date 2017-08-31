@@ -9,7 +9,8 @@ import { NavComponent } from './components/nav/nav.component';
 import { CustomerModule, customerRoutes } from '../customer/customer.module';
 
 export const appRoutes: Routes = [
-  {path: 'customer', children: customerRoutes}
+  {path: '', redirectTo: 'customer', pathMatch: 'full'},
+  {path: 'customer', children: customerRoutes},
 ];
 const COMPONENTS = [AppComponent, CashplayComponent, NavComponent];
 

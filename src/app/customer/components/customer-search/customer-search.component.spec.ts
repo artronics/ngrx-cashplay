@@ -1,18 +1,17 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CustomerPageComponent } from './customer-page.component';
+import { CustomerSearchComponent } from './customer-search.component';
 import { SharedModule } from '../../../shared/shared.module';
-import { CustomerSearchComponent } from '../../components/customer-search/customer-search.component';
 import { MdInputModule } from '@angular/material';
 import { FormsModule } from '@angular/forms';
 
-describe('CustomerPageComponent', () => {
-  let component: CustomerPageComponent;
-  let fixture: ComponentFixture<CustomerPageComponent>;
+describe('CustomerSearchComponent', () => {
+  let component: CustomerSearchComponent;
+  let fixture: ComponentFixture<CustomerSearchComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [CustomerPageComponent, CustomerSearchComponent],
+      declarations: [CustomerSearchComponent],
       imports: [
         SharedModule,
         FormsModule,
@@ -23,7 +22,7 @@ describe('CustomerPageComponent', () => {
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CustomerPageComponent);
+    fixture = TestBed.createComponent(CustomerSearchComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

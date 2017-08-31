@@ -1,0 +1,12 @@
+<art-card title="Search">
+  <md-input-container class="art-search-input">
+    <input mdInput [(ngModel)]="q" #searchCustomerInput (keyup)="search(searchCustomerInput.value)" type="search"
+           placeholder="Search">
+  </md-input-container>
+  <button md-raised-button class="art-search-button" (click)="search()" [disabled]="q==''">
+    <i class="fa fa-search"></i>
+    Search
+  </button>
+  <a md-raised-button color="primary" card-action (click)="newCustomer()">
+    <i class="fa fa-plus"></i> New Customer</a>
+</art-card>
