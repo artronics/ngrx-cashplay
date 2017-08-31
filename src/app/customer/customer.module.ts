@@ -7,6 +7,8 @@ import { MdButtonModule, MdInputModule } from '@angular/material';
 import { CustomerSearchComponent } from './components/customer-search/customer-search.component';
 import { CustomerListComponent } from './components/customer-list/customer-list.component';
 import { FormsModule } from '@angular/forms';
+import { StoreModule } from '@ngrx/store';
+import { reducers } from './reducers/index';
 
 const COMPONENTS = [
   CustomerPageComponent,
@@ -26,6 +28,8 @@ export const customerRoutes: Routes = [
     BrowserAnimationsModule,
     MdInputModule,
     MdButtonModule,
+
+    StoreModule.forFeature('customer', reducers),
   ],
 
 })

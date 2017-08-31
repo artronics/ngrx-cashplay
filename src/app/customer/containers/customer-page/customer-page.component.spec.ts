@@ -5,6 +5,7 @@ import { SharedModule } from '../../../shared/shared.module';
 import { CustomerSearchComponent } from '../../components/customer-search/customer-search.component';
 import { MdInputModule } from '@angular/material';
 import { FormsModule } from '@angular/forms';
+import { CustomerListComponent } from '../../components/customer-list/customer-list.component';
 
 describe('CustomerPageComponent', () => {
   let component: CustomerPageComponent;
@@ -12,7 +13,7 @@ describe('CustomerPageComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [CustomerPageComponent, CustomerSearchComponent],
+      declarations: [CustomerPageComponent, CustomerSearchComponent, CustomerListComponent],
       imports: [
         SharedModule,
         FormsModule,
