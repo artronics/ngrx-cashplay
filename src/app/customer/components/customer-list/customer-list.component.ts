@@ -9,6 +9,7 @@ import { Customer } from '../../models/customer';
 })
 export class CustomerListComponent implements OnInit {
   @Input() table: Table<Customer>;
+  @Input() dataSource;
 
   constructor() {
   }

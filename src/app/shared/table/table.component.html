@@ -9,7 +9,7 @@
 
   <md-header-row *cdkHeaderRowDef="table.displayedColumns"></md-header-row>
   <md-row *cdkRowDef="let row; columns: table.displayedColumns" class="art-table-row"
-          (click)="selectRow(row)" [ngClass]="{'art-table-row-selected': isSelectedRow() === row}"></md-row>
+          (click)="select(row)" [ngClass]="{'art-table-row-selected': selectedRow === row}"></md-row>
 </md-table>
 <!--TODO clean up this mess. *ngIf does not work because table needs #paginator -->
 <md-paginator [ngClass]="{'hide': !table.page || table.page.length <= table.page.pageSize}" #paginator

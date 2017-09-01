@@ -24,3 +24,13 @@ export const getRecentlyAdded = createSelector(
   selectListState,
   fromList.getRecentlyAdded,
 );
+
+export const getRecentlyAddedCustomersCurrentPage = createSelector(
+  selectListState,
+  fromList.getPage,
+);
+
+export const getRecentlyAddedCustomersPageSizeOptions = createSelector(
+  selectListState,
+  fromList.getPageSizeOptions,
+);

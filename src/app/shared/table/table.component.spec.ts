@@ -46,7 +46,7 @@ describe('TableComponent', () => {
           extraClasses: 'art-class'
         }],
       page,
-      pageSizeOption: [1]
+      pageSizeOptions: [1]
     };
     component.table = table;
     component.dataSource = dataSource;

@@ -27,4 +27,13 @@ export class TableComponent<T> implements OnInit {
   ngOnInit() {
   }
 
+  select(row: T) {
+    this.selectedRow = row;
+    this.selectRow.emit(row);
+  }
+
+  onPaginationChange(page: PageEvent) {
+    this.page.emit(page);
+  }
+
 }

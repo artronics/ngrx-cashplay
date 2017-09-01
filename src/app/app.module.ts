@@ -27,7 +27,7 @@ export const routes: Routes = [
   {path: 'app', component: CashplayComponent, canActivate: [AuthGuard], children: appRoutes},
 ];
 
-function initConfig(config: AppConfig) {
+export function initConfig(config: AppConfig) {
   return () => config.load();
 }
 @NgModule({
@@ -50,7 +50,7 @@ function initConfig(config: AppConfig) {
     AppConfig,
     {provide: APP_INITIALIZER, useFactory: initConfig, deps: [AppConfig], multi: true},
     {provide: APP_CONFIG, useValue: CASHPLAY_CONFIG},
-    ApiService
+    ApiService,
   ],
   bootstrap: [AppComponent]
 })

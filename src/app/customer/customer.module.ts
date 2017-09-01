@@ -12,9 +12,12 @@ import { reducers } from './reducers/index';
 import { CommonModule } from '@angular/common';
 import { EffectsModule } from '@ngrx/effects';
 import { ListEffects } from './effects/list.effects';
+import { CustomerRecentlyAddedComponent } from './containers/customer-recently-added/customer-recently-added.component';
+import { CustomerRecentlyAddedDataSource } from './containers/customer-recently-added/customer-recently-added-data-source';
 
 const COMPONENTS = [
   CustomerPageComponent,
+  CustomerRecentlyAddedComponent,
   CustomerSearchComponent,
   CustomerListComponent,
 ];
@@ -36,7 +39,7 @@ export const customerRoutes: Routes = [
     StoreModule.forFeature('customer', reducers),
     EffectsModule.forFeature([ListEffects]),
   ],
-
+  providers: [CustomerRecentlyAddedDataSource]
 })
 export class CustomerModule {
 }
