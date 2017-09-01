@@ -9,6 +9,9 @@ import { CustomerListComponent } from './components/customer-list/customer-list.
 import { FormsModule } from '@angular/forms';
 import { StoreModule } from '@ngrx/store';
 import { reducers } from './reducers/index';
+import { CommonModule } from '@angular/common';
+import { EffectsModule } from '@ngrx/effects';
+import { ListEffects } from './effects/list.effects';
 
 const COMPONENTS = [
   CustomerPageComponent,
@@ -23,6 +26,7 @@ export const customerRoutes: Routes = [
 @NgModule({
   declarations: COMPONENTS,
   imports: [
+    CommonModule,
     FormsModule,
     SharedModule,
     BrowserAnimationsModule,
@@ -30,6 +34,7 @@ export const customerRoutes: Routes = [
     MdButtonModule,
 
     StoreModule.forFeature('customer', reducers),
+    EffectsModule.forFeature([ListEffects]),
   ],
 
 })

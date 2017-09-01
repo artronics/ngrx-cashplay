@@ -4,4 +4,5 @@ export interface Account {
   name: string;
   users: User[];
   loggedInUser: User;
+  token: string;
 }

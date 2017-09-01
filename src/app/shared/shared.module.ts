@@ -4,6 +4,7 @@ import { MdCardModule, MdPaginatorModule, MdSortModule, MdTableModule } from '@a
 import { CardComponent } from './card/card.component';
 import { TableComponent } from './table/table.component';
 import { CdkTableModule } from '@angular/cdk/table';
+import { ResourceService } from './services/resource.service';
 
 const COMPONENTS = [
   CardComponent,
@@ -20,5 +21,6 @@ const COMPONENTS = [
     MdPaginatorModule,
   ],
   exports: COMPONENTS,
+  providers: [ResourceService]
 })
 export class SharedModule {}

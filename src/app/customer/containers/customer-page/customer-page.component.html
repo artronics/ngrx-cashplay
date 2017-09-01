@@ -1,4 +1,5 @@
 <art-card title="Customers">
   <art-customer-search></art-customer-search>
-  <art-customer-list></art-customer-list>
+  <art-customer-list [table]="recentlyAddedTable"></art-customer-list>
+  <p>{{customers$ | async}}</p>
 </art-card>

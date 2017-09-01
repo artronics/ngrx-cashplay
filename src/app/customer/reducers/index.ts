@@ -14,7 +14,7 @@ export const reducers = {
   list: fromList.reducer,
 };
 
-export const selectCustomerState = createFeatureSelector<CustomerState>('list');
+export const selectCustomerState = createFeatureSelector<CustomerState>('customer');
 
 export const selectListState = createSelector(
   selectCustomerState,

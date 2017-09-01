@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { APP_INITIALIZER, NgModule } from '@angular/core';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule, Routes } from '@angular/router';
@@ -16,6 +16,8 @@ import { ApiService } from './shared/services/api.service';
 import { HttpModule } from '@angular/http';
 import { APP_CONFIG, CASHPLAY_CONFIG } from './shared/models/app-config';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { AppConfig } from './shared/services/app-config.service';
+
 
 export function authLoadChildren() {
   return AuthModule;
@@ -24,6 +26,10 @@ export const routes: Routes = [
   {path: 'auth', loadChildren: authLoadChildren},
   {path: 'app', component: CashplayComponent, canActivate: [AuthGuard], children: appRoutes},
 ];
+
+function initConfig(config: AppConfig) {
+  return () => config.load();
+}
 @NgModule({
   imports: [
     BrowserModule,
@@ -41,6 +47,8 @@ export const routes: Routes = [
 
   ],
   providers: [
+    AppConfig,
+    {provide: APP_INITIALIZER, useFactory: initConfig, deps: [AppConfig], multi: true},
     {provide: APP_CONFIG, useValue: CASHPLAY_CONFIG},
     ApiService
   ],

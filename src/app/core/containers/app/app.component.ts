@@ -1,7 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import * as Auth from '../../../auth/actions/auth';
-import * as fromAuth from '../../../auth/reducers';
-import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'art-app',
@@ -11,8 +8,7 @@ import { Store } from '@ngrx/store';
   styles: []
 })
 export class AppComponent implements OnInit {
-  constructor(private store: Store<fromAuth.State>) {
-    this.store.dispatch(new Auth.CheckAccountInStorage());
+  constructor() {
   }
 
   ngOnInit() {

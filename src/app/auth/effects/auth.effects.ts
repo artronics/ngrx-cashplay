@@ -12,6 +12,7 @@ import { AuthService } from '../services/auth.service';
 import * as Auth from '../actions/auth';
 import { LoginRedirect, LoginSuccess } from '../actions/auth';
 import { Account } from '../models/account';
+import { _throw } from 'rxjs/observable/throw';
 
 @Injectable()
 export class AuthEffects {
@@ -22,8 +23,17 @@ export class AuthEffects {
     .exhaustMap(auth =>
       this.authService
         .login(auth)
-        .map(account => {
+        .map(res => {
+          const account = res.json() as Account;
           account.loggedInUser = account.users.filter(u => u.email === auth.email)[0];
+
+          const token = res.headers.get('authorization');
+          if (!token || token === '') {
+            console.log('no token in header');
+            return _throw('no authorization header present');
+          }
+          account.token = token;
+
           return new Auth.LoginSuccess({account});
         })
         .catch(error => of(new Auth.LoginFailure(error)))
@@ -41,6 +51,7 @@ export class AuthEffects {
   checkAccountInStorage$ = this.actions$
     .ofType(Auth.CHECK_ACCOUNT_IN_STORAGE)
     .map((action: Auth.CheckAccountInStorage) => {
+      console.log('kir');
       const accountStr = window.localStorage.getItem('account');
       if (accountStr) {
         const account = JSON.parse(accountStr) as Account;

@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Table } from '../../../shared/models/table';
+import { Customer } from '../../models/customer';
 
 @Component({
   selector: 'art-customer-list',
@@ -6,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./customer-list.component.scss']
 })
 export class CustomerListComponent implements OnInit {
+  @Input() table: Table<Customer>;
 
   constructor() {
   }
